@@ -16,7 +16,7 @@ COPY . .
 # Build Vue.js application
 RUN npm run build
 
-# Use a lightweight Nginx image
+# Use a lightweight Nginx image for the final stage
 FROM nginx:alpine
 
 # Copy build artifacts from the previous stage to Nginx
