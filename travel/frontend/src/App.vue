@@ -4,6 +4,7 @@
 // import CommentPage from "../src/screen/CommentPage.vue";
 // import AllTourCalendar from "../src/screen/AllTourCalendar.vue"
 import Home from "../src/screen/Home.vue"
+import Comment from "../src/screen/CommentPage.vue"
 </script>
 
 <template>
