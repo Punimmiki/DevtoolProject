@@ -30,7 +30,7 @@ const router = createRouter({
         },
 
         {
-            path : '/listConfirm',
+            path : '/listConfirm/:tripId',
             component : listConfirm
         },
         {

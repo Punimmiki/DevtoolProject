@@ -41,8 +41,8 @@
       <div class="flex justify-end">
       <router-link
         :to="{
-          path: '/AllTourCalendar',
-          component: AllTourCalendar,
+          path: '/AddTour',
+          component: AddTour,
         }"
       >
         <button
@@ -50,7 +50,7 @@
           @click="addTrip()"
           class="flex justify-center mt-3 w-full px-6 py-2 text-[#4C3FB6] border border-[#4C3FB6] rounded-full md:mt-0 md:w-auto md:mx-2"
         >
-          ไปหน้ามะปราง
+          AddTour
         </button>
       </router-link>
     </div>
@@ -78,7 +78,7 @@ export default {
         console.log("place")
         console.log("plance3", this.places)
       try { 
-        console.log(this.$route.params)
+        console.log("koi",this.$route.params)
         const response =  await axios.get(`http://localhost:4000/place/${this.$route.params.tripId}`);
         
         this.places = response.data.selectedTrips

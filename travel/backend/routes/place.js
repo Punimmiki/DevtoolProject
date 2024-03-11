@@ -4,19 +4,21 @@ const {admin} = require("../config");
 router = express.Router();
 
 router.get("/place/:id", async (req, res) => {
-    const db = admin.firestore();
-    const placeId = req.params.id;
-    try {
-        const placeDoc = await db.collection('listTrips').doc(placeId).get();
-        if (!placeDoc.exists) {
-            return res.status(404).send({ error: 'place not found' });
-        }
-        const placeData = placeDoc.data();
-        res.send(placeData);
-    } catch (error) {
-        console.error('Error fetching place:', error);
-        res.status(500).send({ error: 'Internal Server Error' });
-    }
+  const db = admin.firestore();
+  const placeId = req.params.id;
+  console.log("90", placeId)
+  try {
+      const placeDoc = await db.collection('listTrips').doc(placeId).get();
+      if (!placeDoc.exists) {
+          return res.status(404).send({ error: 'place not found' });
+      }
+      const placeData = placeDoc.data();
+      res.send(placeData);
+      console.log("sleep")
+  } catch (error) {
+      console.error('Error fetching place:', error);
+      res.status(500).send({ error: 'Internal Server Error' });
+  }
 });
 
 router.get("/places/:name", async (req, res) => {
@@ -40,6 +42,23 @@ router.get("/places", async (req, res) => {
     const db = admin.firestore();
     try {
         const placesSnapshot = await db.collection('place').get();
+        const places = [];
+        
+        placesSnapshot.forEach((doc) => {
+            places.push(doc.data());
+        });
+    
+        res.send(places);
+      } catch (error) {
+        console.error('Error get places:', error);
+        res.status(500).send({ error: 'Internal Server Error' });
+      }
+  });
+
+  router.get("/trips", async (req, res) => {
+    const db = admin.firestore();
+    try {
+        const placesSnapshot = await db.collection('listTrips').get();
         const places = [];
         
         placesSnapshot.forEach((doc) => {

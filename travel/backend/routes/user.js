@@ -13,6 +13,7 @@ router.get("/users", async (req, res) => {
 
 router.post("/register", async (req, res) => {
     const {email, password} = req.body
+    console.log(req.body)
   const userResponse = await admin.auth().createUser({
     email : email,
     password : password,
@@ -32,6 +33,7 @@ router.post("/login", async (req, res) => {
 
     const users = [];
     const { email, password } = req.body;
+    console.log(req.body)
 
 
     const user = await admin.firestore().collection('Users').get();
