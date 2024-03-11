@@ -7,28 +7,28 @@ pipeline {
         REMOTE_HOST     = 'g64070172@34.142.247.166' // Replace with your actual username and remote IP.
         SSH_CREDENTIALS = 'ssh-prod_instance' // Use the ID of the Jenkins stored SSH credentials.
     }
-
+    
     stages {
-        stage('Login to Docker Hub') {
+        stage('Build Vue.js Application') {
             steps {
-                // This step logs into Docker Hub using credentials stored in Jenkins.
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USER')]) {
-                    sh 'echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USER --password-stdin'
+                // Change directory to Vue.js project directory and build the application
+                dir(VUE_PROJECT_DIR) {
+                    sh 'npm install'  // Install dependencies
+                    sh 'npm run build'  // Build Vue.js application
                 }
             }
         }
 
-        stage('Run Docker on Remote Server') {
+        stage('Deploy to Remote Server') {
             steps {
-                // Uses the SSH Agent plugin to setup SSH credentials.
+                // Use SSH Agent plugin to setup SSH credentials
                 sshagent([SSH_CREDENTIALS]) {
-                    // These commands manage Docker containers on the remote server.
-                    // It stops and removes all containers, then removes all images, before running a new container.
-                    sh "ssh -o StrictHostKeyChecking=no $REMOTE_HOST 'docker stop \$(docker ps -a -q) || true'"
-                    sh "ssh -o StrictHostKeyChecking=no $REMOTE_HOST 'docker rm \$(docker ps -a -q) || true'"
-                    sh "ssh -o StrictHostKeyChecking=no $REMOTE_HOST 'docker rmi \$(docker images -q) || true'"
-                    sh "ssh -o StrictHostKeyChecking=no $REMOTE_HOST 'docker run -d --name fastapi-webhook -p 8085:80 $DOCKER_IMAGE'"
-                    sh "ssh -o StrictHostKeyChecking=no $REMOTE_HOST 'docker ps -a'"
+                    // Copy build artifacts to remote server
+                    sh "scp -o StrictHostKeyChecking=no -r ${VUE_PROJECT_DIR}/dist/* ${REMOTE_HOST}:~/vue_app/"
+
+                    // You may need to adjust the destination directory path on the remote server
+                    // Serve build files using Nginx or any other web server
+                    sh "ssh -o StrictHostKeyChecking=no ${REMOTE_HOST} 'sudo cp -r ~/vue_app/* /var/www/html/'"
                 }
             }
         }
