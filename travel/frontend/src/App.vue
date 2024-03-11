@@ -1,8 +1,9 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/WelcomeItem.vue";
-import CommentPage from "../src/screen/CommentPage.vue";
-import AllTourCalendar from "../src/screen/AllTourCalendar.vue"
+// import HelloWorld from "./components/HelloWorld.vue";
+// import TheWelcome from "./components/WelcomeItem.vue";
+// import CommentPage from "../src/screen/CommentPage.vue";
+// import AllTourCalendar from "../src/screen/AllTourCalendar.vue"
+import Home from "../src/screen/Home.vue"
 </script>
 
 <template>
@@ -21,12 +22,12 @@ import AllTourCalendar from "../src/screen/AllTourCalendar.vue"
   </header> -->
 
   <main>
-    <AllTourCalendar />
+    <Home />
   </main>
 </template>
 
 <style scoped>
-header {
+/* header {
   line-height: 1.5;
 }
 
@@ -51,5 +52,5 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
-}
+} */
 </style>

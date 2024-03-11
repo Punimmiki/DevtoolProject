@@ -76,8 +76,8 @@ const mobileMenuOpen = ref(false)
 </script>
 
 <template>
-  <div>
-    <header class="bg-emerald-900">
+  <div class="bg-verylightgreen">
+    <header class="bg-darkgreen">
       <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <!-- <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
@@ -193,7 +193,9 @@ const mobileMenuOpen = ref(false)
         </DialogPanel>
       </Dialog>
     </header>
-    <div class="m-6">
+
+
+    <div class="m-6 ">
       <div class="text-start">
         <div class="text-3xl font-extrabold">
           Wonderful Trip
@@ -207,7 +209,7 @@ const mobileMenuOpen = ref(false)
       <!-- <div class="mx-auto max-w-2xl px-4 py-4 "> -->
 
       <div v-for="product in products2" :key="product.id" class="group relative">
-        <div class="bg-white rounded-2xl p-4 my-4 grid grid-cols-1 gap-x-6 gap-y-4 ">
+        <div class="bg-white rounded-2xl p-4 my-4 grid grid-cols-1 gap-x-6 gap-y-4">
           <div
             class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
             <img :src="product.imageSrc" :alt="product.imageAlt"

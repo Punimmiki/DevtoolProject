@@ -5,10 +5,11 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    // colors: {
-    //   'darkgreen': '#3A4646',
-    //   'lightgreen': '#C1CB9C',
-    // },
+    colors: {
+      'darkgreen': '#3A4646',
+      'lightgreen': '#C1CB9C',
+      'verylightgreen': '#E5E6E1'
+    },
     extend: {},
   },
   plugins: [
