@@ -19,6 +19,7 @@ import {
     FingerPrintIcon,
     SquaresPlusIcon,
     XMarkIcon,
+    ArrowLeftCircleIcon
 } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon, UserCircleIcon, CheckIcon } from '@heroicons/vue/20/solid'
 
@@ -29,6 +30,9 @@ const mobileMenuOpen = ref(false)
 <template>
     <div >
         <div class="m-6">
+          <div class="w-12 mb-4">
+            <ArrowLeftCircleIcon/>
+          </div>
             <div class="group relative">
                 <div
                     class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
