@@ -8,6 +8,7 @@ import Comment from "../src/screen/CommentPage.vue"
 </script>
 
 <template>
+  <router-view />
   <!-- <header>
     <img
       alt="Vue logo"
