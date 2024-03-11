@@ -50,9 +50,18 @@ import CheckBill from "../screen/CheckBill.vue"
     </div>
 
     <div class="relative" v-if="!showCheckBill" >
-      <h1 class="text-[26px] font-bold text-black mx-5">Recommend</h1>
+      <div class="flex items-center">
+        <h1 class="text-[26px] font-bold text-black mx-5">Recommend</h1>
+        <div class="w-full justify-end items-center  p-5 flex ">
+         <router-link to="/listYourtrips"> <p>Trip</p>  </router-link> 
+        <i class="fa-solid fa-chevron-right" style="color: #6f7789" > </i>
+        </div>
+        
+      </div>
+     
+
       <div class="flex flex-wrap justify-center m-5 grid grid-cols-2 gap-4">
-        <div v-for="(item, index) in filteredItems" :key="index">
+        <div v-for="(item, index) in filteredItems" :key="index"> 
           <div
             class="w-[195px] h-[195px] rounded-[13px] overflow-hidden shadow-lg"
           >
