@@ -23,63 +23,12 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon, UserCircleIcon, CheckIcon } from '@heroicons/vue/20/solid'
 
 
-const includedFeatures = [
-    'Private forum access',
-    'Member resources',
-    'Entry to annual conference',
-    'Official member t-shirt',
-]
-
-const products = [
-    { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-    { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-    { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-    { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-    { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
-]
-const products2 = [
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://media.timeout.com/images/105240236/1372/772/image.webp',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    //   {
-    //     id: 2,
-    //     name: 'Basic Tee',
-    //     href: '#',
-    //     imageSrc: 'https://media.timeout.com/images/105240236/1372/772/image.webp',
-    //     imageAlt: "Front of men's Basic Tee in black.",
-    //     price: '$35',
-    //     color: 'Black',
-    //   },
-    //   {
-    //     id: 3,
-    //     name: 'Basic Tee',
-    //     href: '#',
-    //     imageSrc: 'https://media.timeout.com/images/105240236/1372/772/image.webp',
-    //     imageAlt: "Front of men's Basic Tee in black.",
-    //     price: '$35',
-    //     color: 'Black',
-    //   },
-    // More products...
-]
-const callsToAction = [
-    { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-    { name: 'Contact sales', href: '#', icon: PhoneIcon },
-]
-
 const mobileMenuOpen = ref(false)
 </script>
 
 <template>
-    <div>
+    <div >
         <div class="m-6">
-
-
             <div class="group relative">
                 <div
                     class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
@@ -146,7 +95,10 @@ export default {
 };
 
 </script>
-<style scoped>
+<style global lang="postcss">
+body{
+  @apply h-full bg-verylightgreen
+}
 /* header {
   line-height: 1.5;
 }
