@@ -12,7 +12,7 @@ pipeline {
         stage('Build Vue.js Application') {
             steps {
                 // Change directory to Vue.js project directory and build the application
-                dir(VUE_PROJECT_DIR) {
+                dir(./travel/frontend) {
                     sh 'npm install'  // Install dependencies
                     sh 'npm run build'  // Build Vue.js application
                 }
@@ -33,4 +33,3 @@ pipeline {
             }
         }
     }
-}
