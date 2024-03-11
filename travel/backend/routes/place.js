@@ -19,6 +19,23 @@ router.get("/place/:id", async (req, res) => {
     }
 });
 
+router.get("/places/:name", async (req, res) => {
+  const db = admin.firestore();
+  const placeName = req.params.name;
+  try {
+      const placeDoc = await db.collection('place').where('name', '==', placeName).limit(1).get();
+      if (placeDoc.empty) {
+          return res.status(404).send({ error: 'place not found' });
+      }
+      
+      const placeData = placeDoc.docs[0].data();
+      res.send(placeData);
+  } catch (error) {
+      console.error('Error fetching place:', error);
+      res.status(500).send({ error: 'Internal Server Error' });
+  }
+});
+
 router.get("/places", async (req, res) => {
     const db = admin.firestore();
     try {
@@ -68,5 +85,6 @@ router.get("/places", async (req, res) => {
         res.status(500).send({ error: 'Internal Server Error' });
       }
   });
+  
 
 exports.router = router;
