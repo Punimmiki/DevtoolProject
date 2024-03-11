@@ -25,44 +25,6 @@ import Carousel from 'primevue/carousel';
 import Tag from 'primevue/tag';
 import Button from 'primevue/button';
 
-
-const products = [
-  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
-]
-const products2 = [
-  {
-    id: 1,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://media.timeout.com/images/105240236/1372/772/image.webp',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  {
-    id: 2,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://media.timeout.com/images/105240236/1372/772/image.webp',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  {
-    id: 3,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://media.timeout.com/images/105240236/1372/772/image.webp',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  // More products...
-]
 const callsToAction = [
   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
   { name: 'Contact sales', href: '#', icon: PhoneIcon },
@@ -211,9 +173,9 @@ const mobileMenuOpen = ref(false)
                   <Tag class="absolute" style="left:5px; top: 5px" />
                 </div>
               </div>
-              <div class="mb-3 font-medium">{{slotProps.data.province}}</div>
+              <div class="mb-3 font-medium">{{ slotProps.data.province }}</div>
               <div class="flex justify-between items-center">
-                <div class="mt-0 font-semibold text-xl">{{slotProps.data.name}}</div>
+                <div class="mt-0 font-semibold text-xl">{{ slotProps.data.name }}</div>
               </div>
             </div>
           </template>
@@ -223,27 +185,27 @@ const mobileMenuOpen = ref(false)
       <div class="text-2xl font-medium">
         Top Place
       </div>
-      <div v-for="product in places" :key="product.name" class="group relative">
-        <div class="bg-lightgreen rounded-2xl p-4 my-4 grid grid-cols-1 gap-x-6 gap-y-4 ">
-          <div
-            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80">
-            <img :src="product.img"
-              class="h-full w-full object-cover object-center lg:h-full lg:w-full rounded-2xl" />
-          </div>
-          <h2 class=" text-2xl font-bold tracking-tight text-gray-900">{{product.name}}</h2>
-          <div class="mt-1 flex justify-between">
-            <div>
-              <h3 class="text-sm text-gray-700">
-                <a :href="product.name">
-                  <span aria-hidden="true" class="absolute inset-0" />
-                  {{ product.province }}
-                </a>
-              </h3>
-              <p class="mt-1 text-sm text-gray-500">{{ product.description }}</p>
+      <div v-for="place in places" :key="place.name" class="group relative">
+          <div class="bg-lightgreen rounded-2xl p-4 my-4 grid grid-cols-1 gap-x-6 gap-y-4 ">
+            <div
+              class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80">
+              <img :src="place.img"
+                class="h-full w-full object-cover object-center lg:h-full lg:w-full rounded-2xl" />
             </div>
-            <p class="text-sm font-medium text-gray-900">{{ product.price }} ฿</p>
+            <h2 class=" text-2xl font-bold tracking-tight text-gray-900">{{ place.name }}</h2>
+            <div class="mt-1 flex justify-between">
+              <div>
+                <h3 class="text-sm text-gray-700">
+                  <a :href="`/tour/${place.name}`">
+                    <span aria-hidden="true" class="absolute inset-0" />
+                    {{ place.province }}
+                  </a>
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">{{ place.description }}</p>
+              </div>
+              <p class="text-sm font-medium text-gray-900">{{ place.price }} ฿</p>
+            </div>
           </div>
-        </div>
       </div>
     </div>
 
@@ -258,7 +220,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      places: []
+      places: [],
     };
   },
 

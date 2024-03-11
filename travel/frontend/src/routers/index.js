@@ -9,6 +9,8 @@ import SearchPage from '@/screen/SearchPage.vue'
 import AddTour from '@/screen/AddTour.vue'
 import AllTourCalendar from '@/screen/AllTourCalendar.vue'
 import DetailEachPage from '@/screen/DetailEachPage.vue'
+import Home from '@/screen/Home.vue'
+import Tour from '@/screen/Tour.vue'
 // import Home from '@/components/Home.vue'
 
 const router = createRouter({
@@ -53,11 +55,15 @@ const router = createRouter({
             name: 'Detail',
             component : DetailEachPage
         },
-       
-        // {
-        //     path : '/home',
-        //     component : Home
-        // }
+        {
+            path : '/Home',
+            component : Home
+        },
+        {
+            path : '/Tour/:name',
+            component : Tour,
+        },
+
     ]
 })
 
